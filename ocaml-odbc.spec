@@ -8,8 +8,8 @@ Release:	1
 License:	LGPL
 Group:		Development/Libraries
 Vendor:		Maxence Guesdon <maxence.guesdon@inria.fr>
-URL:		http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/lablgtk.html
-Source0:	ocamlodbc_%{strange_version}.tar.gz
+URL:		http://pauillac.inria.fr/~guesdon/Tools/ocamlodbc/ocamlodbc.html
+Source0:	http://pauillac.inria.fr/~guesdon/Tools/Tars/ocamlodbc_%{strange_version}.tar.gz
 BuildRequires:	unixODBC-devel
 BuildRequires:	ocaml >= 3.04-7
 %requires_eq	ocaml-runtime
