@@ -84,8 +84,6 @@ archive(native) = "ocamlodbc.cmxa"
 linkopts = ""
 EOF
 
-gzip -9nf LICENCE *.mli
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -97,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
+%doc *.mli
 %{_libdir}/ocaml/ocamlodbc/*.cm[ixa]*
 %{_libdir}/ocaml/ocamlodbc/*.a
 %{_examplesdir}/%{name}-%{version}
