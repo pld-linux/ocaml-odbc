@@ -1,0 +1,2 @@
+- moved %%{_libdir}/ocaml/ocamlodbc to main package (from -devel)
+- -devel now owns entiere site-lib/ocamlodbc, not only META in it
