@@ -1,4 +1,4 @@
-%define		strange_version		%(echo %{version} | sed -e 's/\\./_/')
+%define		strange_version		%(echo %{version} | tr . _)
 
 Summary:	ODBC binding for OCaml
 Summary(pl):	Wi±zania ODBC dla OCamla
