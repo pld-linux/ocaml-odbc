@@ -91,14 +91,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%dir %{_libdir}/ocaml/ocamlodbc
 %attr(755,root,root) %{_libdir}/ocaml/ocamlodbc/*.so
 %{_libdir}/ocaml/*.so
 
 %files devel
 %defattr(644,root,root,755)
 %doc *.gz
-%dir %{_libdir}/ocaml/ocamlodbc
 %{_libdir}/ocaml/ocamlodbc/*.cm[ixa]*
 %{_libdir}/ocaml/ocamlodbc/*.a
 %{_examplesdir}/%{name}-%{version}
-%{_libdir}/ocaml/site-lib/ocamlodbc/META
+%{_libdir}/ocaml/site-lib/ocamlodbc
