@@ -6,7 +6,7 @@ Name:		ocaml-odbc
 Version:	2.5
 Release:	1
 License:	LGPL
-Group:		Development/Libraries
+Group:		Libraries
 Vendor:		Maxence Guesdon <maxence.guesdon@inria.fr>
 URL:		http://pauillac.inria.fr/~guesdon/Tools/ocamlodbc/ocamlodbc.html
 Source0:	http://pauillac.inria.fr/~guesdon/Tools/Tars/ocamlodbc_%{strange_version}.tar.gz
@@ -24,7 +24,7 @@ contains files needed to run bytecode executables using OCamlODBC.
 OCamlODBC jest bibliotek± umo¿liwiaj±ca dostêp do baz danych poprzez
 sterownik Open DataBase Connectivity (ODBC) z programów napisanych w
 OCamlu. Pakiet ten zawiera binaria potrzebne do uruchamiania programów
-u¿ywaj±cych LablGtk.
+u¿ywaj±cych OCamlODBC.
 
 %package devel
 Summary:	ODBC binding for OCaml - development part
@@ -36,13 +36,13 @@ Requires:	%{name} = %{version}-%{release}
 %description devel
 OCamlODBC is a library allowing to acces databases via an Open
 DataBase Connectivity (ODBC) driver from OCaml programs. This package
-contains files needed to develop OCaml programs using LablTk.
+contains files needed to develop OCaml programs using OCamlODBC.
 
 %description devel -l pl
 OCamlODBC jest bibliotek± umo¿liwiaj±ca dostêp do baz danych poprzez
 sterownik Open DataBase Connectivity (ODBC) z programów napisanych w
 OCamlu. Pakiet ten zawiera pliki niezbêdne do tworzenia programów
-u¿ywaj±cych LablTk.
+u¿ywaj±cych OCamlODBC.
 
 %prep
 %setup -q -n ocamlodbc-%{version}
@@ -56,7 +56,7 @@ u¿ywaj±cych LablTk.
 #   -- there are specialzed bindings for msql and psql
 #   -- postgresql-odbc-devel conflicts with unixODBC-devel
 
-%{__make} unixodbc
+%{__make} CC="%{__cc} %{rpmcflags} -fpic" unixodbc
 
 # ok, I have my own opinion how to make libraries ;)
 ocamlmklib -o ocamlodbc ocaml_odbc.cm[xo] ocamlodbc.cm[xo] \
@@ -67,10 +67,22 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/ocamlodbc
 install *.cm[ixa]* *.a dll*.so $RPM_BUILD_ROOT%{_libdir}/ocaml/ocamlodbc
-(cd $RPM_BUILD_ROOT%{_libdir}/ocaml/ocamlodbc && ln -s dll*.so ..)
+(cd $RPM_BUILD_ROOT%{_libdir}/ocaml && ln -s ocamlodbc/dll*.so .)
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -r Exemples Biniki $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+# META for findlib
+install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/ocamlodbc
+cat > $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/ocamlodbc/META <<EOF
+# Specifications for the "ocamlodbc" library:
+requires = "unix"
+version = "%{version}"
+directory = "+ocamlodbc"
+archive(byte) = "ocamlodbc.cma"
+archive(native) = "ocamlodbc.cmxa"
+linkopts = ""
+EOF
 
 gzip -9nf LICENCE *.mli
 
@@ -89,3 +101,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/ocamlodbc/*.cm[ixa]*
 %{_libdir}/ocaml/ocamlodbc/*.a
 %{_examplesdir}/%{name}-%{version}
+%{_libdir}/ocaml/site-lib/ocamlodbc/META
