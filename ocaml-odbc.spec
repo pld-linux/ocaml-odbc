@@ -5,7 +5,7 @@ Summary(pl):	Wi±zania ODBC dla OCamla
 Name:		ocaml-odbc
 Version:	2.5
 Release:	2
-License:	LGPL
+License:	LGPL/GPL
 Group:		Libraries
 Vendor:		Maxence Guesdon <maxence.guesdon@inria.fr>
 URL:		http://pauillac.inria.fr/~guesdon/Tools/ocamlodbc/ocamlodbc.html
