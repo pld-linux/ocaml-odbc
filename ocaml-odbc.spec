@@ -3,16 +3,16 @@
 Summary:	ODBC binding for OCaml
 Summary(pl):	Wi±zania ODBC dla OCamla
 Name:		ocaml-odbc
-Version:	2.5
-Release:	4
+Version:	2.6
+Release:	1
 License:	GPL/LGPL
 Group:		Libraries
 Vendor:		Maxence Guesdon <maxence.guesdon@inria.fr>
 URL:		http://pauillac.inria.fr/~guesdon/Tools/ocamlodbc/ocamlodbc.html
 Source0:	http://pauillac.inria.fr/~guesdon/Tools/Tars/ocamlodbc_%{strange_version}.tar.gz
-# Source0-md5:	d46ca2058fd1bb85434c509f3da9e2fe
+# Source0-md5:	1375ce7bb9f34d4d516b335416914833
 BuildRequires:	unixODBC-devel
-BuildRequires:	ocaml >= 3.04-7
+BuildRequires:	ocaml >= 3.07
 %requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -66,8 +66,9 @@ ocamlmklib -o ocamlodbc ocaml_odbc.cm[xo] ocamlodbc.cm[xo] \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/ocamlodbc
-install *.cm[ixa]* *.a dll*.so $RPM_BUILD_ROOT%{_libdir}/ocaml/ocamlodbc
+install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/{ocamlodbc,stublibs}
+install *.cm[ixa]* *.a $RPM_BUILD_ROOT%{_libdir}/ocaml/ocamlodbc
+install dll*.so $RPM_BUILD_ROOT%{_libdir}/ocaml/stublibs
 (cd $RPM_BUILD_ROOT%{_libdir}/ocaml && ln -s ocamlodbc/dll*.so .)
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
@@ -90,13 +91,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%dir %{_libdir}/ocaml/ocamlodbc
-%attr(755,root,root) %{_libdir}/ocaml/ocamlodbc/*.so
-%{_libdir}/ocaml/*.so
+%attr(755,root,root) %{_libdir}/ocaml/stublibs/*.so
 
 %files devel
 %defattr(644,root,root,755)
 %doc *.mli LICENCE
+%dir %{_libdir}/ocaml/ocamlodbc
 %{_libdir}/ocaml/ocamlodbc/*.cm[ixa]*
 %{_libdir}/ocaml/ocamlodbc/*.a
 %{_examplesdir}/%{name}-%{version}
