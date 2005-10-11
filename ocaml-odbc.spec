@@ -4,7 +4,7 @@ Summary:	ODBC binding for OCaml
 Summary(pl):	Wi±zania ODBC dla OCamla
 Name:		ocaml-odbc
 Version:	2.6
-Release:	3
+Release:	4
 License:	GPL/LGPL
 Group:		Libraries
 Vendor:		Maxence Guesdon <maxence.guesdon@inria.fr>
