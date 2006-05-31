@@ -1,10 +1,10 @@
 %define		strange_version		%(echo %{version} | tr . _)
-%define		ocaml_ver	1:3.09.1
+%define		ocaml_ver	1:3.09.2
 Summary:	ODBC binding for OCaml
 Summary(pl):	Wi±zania ODBC dla OCamla
 Name:		ocaml-odbc
 Version:	2.6
-Release:	7
+Release:	8
 License:	GPL/LGPL
 Group:		Libraries
 URL:		http://pauillac.inria.fr/~guesdon/Tools/ocamlodbc/ocamlodbc.html
