@@ -1,7 +1,7 @@
 %define		strange_version		%(echo %{version} | tr . _)
 %define		ocaml_ver	1:3.09.2
 Summary:	ODBC binding for OCaml
-Summary(pl):	Wi±zania ODBC dla OCamla
+Summary(pl.UTF-8):   WiÄ…zania ODBC dla OCamla
 Name:		ocaml-odbc
 Version:	2.6
 Release:	8
@@ -20,15 +20,15 @@ OCamlODBC is a library allowing to acces databases via an Open
 DataBase Connectivity (ODBC) driver from OCaml programs. This package
 contains files needed to run bytecode executables using OCamlODBC.
 
-%description -l pl
-OCamlODBC jest bibliotek± umo¿liwiaj±ca dostêp do baz danych poprzez
-sterownik Open DataBase Connectivity (ODBC) z programów napisanych w
-OCamlu. Pakiet ten zawiera binaria potrzebne do uruchamiania programów
-u¿ywaj±cych OCamlODBC.
+%description -l pl.UTF-8
+OCamlODBC jest bibliotekÄ… umoÅ¼liwiajÄ…ca dostÄ™p do baz danych poprzez
+sterownik Open DataBase Connectivity (ODBC) z programÃ³w napisanych w
+OCamlu. Pakiet ten zawiera binaria potrzebne do uruchamiania programÃ³w
+uÅ¼ywajÄ…cych OCamlODBC.
 
 %package devel
 Summary:	ODBC binding for OCaml - development part
-Summary(pl):	Wi±zania ODBC dla OCamla - cze¶æ programistyczna
+Summary(pl.UTF-8):   WiÄ…zania ODBC dla OCamla - czeÅ›Ä‡ programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %requires_eq	ocaml
@@ -38,11 +38,11 @@ OCamlODBC is a library allowing to acces databases via an Open
 DataBase Connectivity (ODBC) driver from OCaml programs. This package
 contains files needed to develop OCaml programs using OCamlODBC.
 
-%description devel -l pl
-OCamlODBC jest bibliotek± umo¿liwiaj±ca dostêp do baz danych poprzez
-sterownik Open DataBase Connectivity (ODBC) z programów napisanych w
-OCamlu. Pakiet ten zawiera pliki niezbêdne do tworzenia programów
-u¿ywaj±cych OCamlODBC.
+%description devel -l pl.UTF-8
+OCamlODBC jest bibliotekÄ… umoÅ¼liwiajÄ…ca dostÄ™p do baz danych poprzez
+sterownik Open DataBase Connectivity (ODBC) z programÃ³w napisanych w
+OCamlu. Pakiet ten zawiera pliki niezbÄ™dne do tworzenia programÃ³w
+uÅ¼ywajÄ…cych OCamlODBC.
 
 %prep
 %setup -q -n ocamlodbc-%{version}
